@@ -1,0 +1,21 @@
+
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+
+.body {
+  width: 95%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.head {
+  @include flex(space-between, center, row);
+  padding: 5.7rem 0 2.9rem 0;
+}
+
+

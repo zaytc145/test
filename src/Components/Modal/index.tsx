@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import close from "../style/icons/cross.svg";
-import Button from "./Button";
+import close from "../../style/icons/cross.svg";
+import Button from "../Button";
 import { createPortal } from "react-dom";
+import "./index.scss";
 
 interface ModalProps {
   show: boolean;
@@ -30,7 +31,7 @@ const Modal = ({ show, onClick, closeModal }: ModalProps) => {
               } else {
                 setErr(false);
                 await onClick(note);
-                closeModal()
+                closeModal();
               }
             }}
           />

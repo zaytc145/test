@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, getItems, updateItem } from "../Store";
+import { RootState, getItems, updateItem } from "../../Store";
+import "./index.scss";
 
-const ItemInfo = ({ match }: any) => {
+const EditInfo = ({ match }: any) => {
   let { id } = match.params;
   const dispatch = useDispatch();
   const [note, setNote] = useState("");
@@ -38,4 +39,4 @@ const ItemInfo = ({ match }: any) => {
   );
 };
 
-export default React.memo(ItemInfo);
+export default React.memo(EditInfo);

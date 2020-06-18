@@ -1,10 +1,12 @@
 import { createSlice, configureStore, combineReducers, PayloadAction } from "@reduxjs/toolkit";
 import API from "../api";
+import thunk from "redux-thunk";
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
 type State = { id: number; title: string }[];
+
 const initialState: State = [];
 
 const itemsSlice = createSlice({
@@ -58,6 +60,7 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
+  middleware: [thunk],
 });
 
 export default store;

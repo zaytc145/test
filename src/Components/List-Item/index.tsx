@@ -1,9 +1,10 @@
 import React from "react";
-import editIcon from "../style/icons/pencil.svg";
-import deleteIcon from "../style/icons/delete.svg";
+import editIcon from "../../style/icons/pencil.svg";
+import deleteIcon from "../../style/icons/delete.svg";
 import { Link } from "react-router-dom";
-import { deleteItem } from "../Store";
+import { deleteItem } from "../../Store";
 import { useDispatch } from "react-redux";
+import "./index.scss";
 
 interface LitsItemProps {
   itemId: number;

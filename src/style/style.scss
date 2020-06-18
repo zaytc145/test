@@ -1,7 +1,3 @@
-$borderColor: #e6e6e6;
-$сreateButtonColor: #39b54a;
-$deleteButtonColor: #ff0000;
-$backButtonColor: #0071bc;
 
 * {
   margin: 0;
@@ -33,20 +29,6 @@ input {
   flex-direction: $direction;
 }
 
-@mixin buttonEffectColor($color) {
-  border-color: $color;
-  &:hover {
-    background-color: $color;
-    color: white;
-  }
-}
-
-.body {
-  width: 95%;
-  height: 100vh;
-  margin: 0 auto;
-}
-
 h1 {
   font-size: 3.2rem;
 }
@@ -54,110 +36,6 @@ h1 {
 h2 {
   font-size: 1.3rem;
   font-weight: 300;
-}
-
-.button {
-  padding: 1rem 4.1rem;
-  border: none;
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.create-button {
-  @include buttonEffectColor($сreateButtonColor);
-}
-
-.back-button {
-  @include buttonEffectColor($backButtonColor);
-}
-
-.head {
-  @include flex(space-between, center, row);
-  padding: 5.7rem 0 2.9rem 0;
-}
-
-.list-item {
-  @include flex(space-between, stretch, row);
-  border: 1px solid $borderColor;
-  border-bottom: none;
-  &:last-child {
-    border-bottom: 1px solid $borderColor;
-  }
-}
-
-.list-item-el {
-  border-right: 1px solid $borderColor;
-  padding: 1.5rem;
-  &:last-child {
-    border-right: none;
-  }
-  span {
-    font-size: 1.4rem;
-  }
-}
-
-.list-item-num {
-  flex: 0 2 18rem;
-}
-.list-item-text {
-  flex: 1 3 87rem;
-}
-
-.list-item-buttons {
-  flex: 1 1 8rem;
-  @include flex(space-evenly, center, row);
-  padding: 0.5rem;
-}
-.icon {
-  width: 25px;
-  cursor: pointer;
-}
-
-.close-icon {
-  width: 20px;
-  align-self: flex-end;
-  margin: 0;
-}
-.modal {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  // background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-.modal-body {
-  width: 40rem;
-  min-height: 18vh;
-  position: absolute;
-  padding: 1rem 2rem 2rem 2rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(133, 133, 133, 0.3);
-  @include flex(space-evenly, center, column);
-  h2 {
-    align-self: start;
-  }
-
-  .button {
-    align-self: flex-end;
-    margin-top: 1.5rem;
-  }
-  span {
-    font-size: 1.3;
-    align-self: flex-start;
-    color: $deleteButtonColor;
-  }
-}
-
-.item-description {
-  @include flex(space-evenly, flex-start, column);
-  width: 40rem;
 }
 
 @media screen and (max-width: 417px) {

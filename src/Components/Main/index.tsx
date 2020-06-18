@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Button";
-import ListItem from "./List-item";
-import Modal from "./Modal";
+import Button from "../Button";
+import ListItem from "../List-Item";
+import Modal from "../Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, getItems, createItem } from "../Store";
+import { RootState, getItems, createItem } from "../../Store";
+import "./index.scss";
 
 const Main = () => {
   const [modal, showModal] = useState(false);
@@ -30,7 +31,7 @@ const Main = () => {
       <Modal
         show={modal}
         closeModal={() => showModal(false)}
-        onClick={ (title: string) =>  dispatch(createItem(title))}
+        onClick={(title: string) => dispatch(createItem(title))}
       />
     </div>
   );
