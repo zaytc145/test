@@ -42,4 +42,4 @@ const Modal = ({ show, onClick, closeModal }: ModalProps) => {
   return null;
 };
 
-export default Modal;
+export default React.memo(Modal);

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, getItems, updateItem } from "../Store";
-import { title } from "process";
 
 const ItemInfo = ({ match }: any) => {
   let { id } = match.params;
@@ -19,7 +18,9 @@ const ItemInfo = ({ match }: any) => {
     if (items.length !== 0) {
       setNote(items.find((el) => el.id === +id)!.title);
     }
-  },[items]);
+  }, [items]);
+
+  const oneUpdateItem = useCallback(() => dispatch(updateItem(id, note)), [dispatch, note, id]);
 
   return (
     <div className="body">
@@ -30,11 +31,11 @@ const ItemInfo = ({ match }: any) => {
         <h2>Краткое описание</h2>
         <input className="text-input" value={note} type="text" onChange={(e) => setNote(e.target.value)} />
         <Link to="/">
-          <Button text="Вернуться в список" type="back" onClick={() => dispatch(updateItem(id, note))}></Button>
+          <Button text="Вернуться в список" type="back" onClick={oneUpdateItem}></Button>
         </Link>
       </div>
     </div>
   );
 };
 
-export default ItemInfo;
+export default React.memo(ItemInfo);

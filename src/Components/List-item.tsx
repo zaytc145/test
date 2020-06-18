@@ -13,8 +13,8 @@ interface LitsItemProps {
 const ListItem = ({ text, itemId }: LitsItemProps) => {
   const dispatch = useDispatch();
 
-  const remoweItem = async (id: number) => {
-    await dispatch(deleteItem(id));
+  const remoweItem = (id: number) => {
+    dispatch(deleteItem(id));
   };
 
   return (
@@ -35,4 +35,4 @@ const ListItem = ({ text, itemId }: LitsItemProps) => {
   );
 };
 
-export default ListItem;
+export default React.memo(ListItem);
