@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from "./Main";
 import "../style/style.scss";
-import ItemInfo from "./Item-info";
+import ItemInfo from "./Edit-item";
 
 const App = () => {
   return (

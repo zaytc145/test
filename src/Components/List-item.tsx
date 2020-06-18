@@ -2,6 +2,8 @@ import React from "react";
 import editIcon from "../style/icons/pencil.svg";
 import deleteIcon from "../style/icons/delete.svg";
 import { Link } from "react-router-dom";
+import { deleteItem } from "../Store";
+import { useDispatch } from "react-redux";
 
 interface LitsItemProps {
   itemId: number;
@@ -9,6 +11,12 @@ interface LitsItemProps {
 }
 
 const ListItem = ({ text, itemId }: LitsItemProps) => {
+  const dispatch = useDispatch();
+
+  const remoweItem = async (id: number) => {
+    await dispatch(deleteItem(id));
+  };
+
   return (
     <div className="list-item">
       <div className="list-item-el list-item-num">
@@ -21,7 +29,7 @@ const ListItem = ({ text, itemId }: LitsItemProps) => {
         <Link to={`/edit/${itemId}`}>
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
-        <img className="icon" src={deleteIcon} alt="delete icon" />
+        <img className="icon" src={deleteIcon} alt="delete icon" onClick={() => remoweItem(itemId)} />
       </div>
     </div>
   );

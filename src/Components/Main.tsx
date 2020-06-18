@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import ListItem from "./List-item";
 import Modal from "./Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, getItems, createItem } from "../Store";
 
 const Main = () => {
   const [modal, showModal] = useState(false);
+  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.items);
 
-  const testData = [
-    {
-      text: "item 1",
-      id: 1,
-    },
-    {
-      text: "item 2",
-      id: 2,
-    },
-  ];
+  useEffect(() => {
+    dispatch(getItems());
+  }, []);
 
   const renderList = (items: any[]) => {
     return items.map((el, i) => {
-      return <ListItem text={el.text} itemId={el.id} key={i} />;
+      return <ListItem text={el.title} itemId={el.id} key={i} />;
     });
   };
 
@@ -29,8 +26,12 @@ const Main = () => {
         <h1>Список задач</h1>
         <Button text="Добавить" type="create" onClick={() => showModal(true)} />
       </div>
-      <div className="list">{renderList(testData)}</div>
-      <Modal show={modal} onClick={() => showModal(false)} />
+      <div className="list">{renderList(items)}</div>
+      <Modal
+        show={modal}
+        closeModal={() => showModal(false)}
+        onClick={ (title: string) =>  dispatch(createItem(title))}
+      />
     </div>
   );
 };
