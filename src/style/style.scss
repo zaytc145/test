@@ -38,24 +38,3 @@ h2 {
   font-weight: 300;
 }
 
-@media screen and (max-width: 417px) {
-  .item-description {
-    width: 100%;
-  }
-
-  .modal-body {
-    width: 100%;
-    h2 {
-      font-size: 2rem;
-    }
-    input {
-      font-size: 1.8rem;
-    }
-    span {
-      font-size: 1.5rem;
-    }
-    .close-icon {
-      width: 25px;
-    }
-  }
-}

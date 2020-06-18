@@ -45,3 +45,21 @@
     color: #ff0000;
   }
 }
+
+@media screen and (max-width: 417px) {
+  .modal-body {
+    width: 100%;
+    h2 {
+      font-size: 2rem;
+    }
+    input {
+      font-size: 1.8rem;
+    }
+    span {
+      font-size: 1.5rem;
+    }
+    .close-icon {
+      width: 25px;
+    }
+  }
+}

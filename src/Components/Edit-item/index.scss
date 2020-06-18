@@ -9,3 +9,9 @@
   @include flex(space-evenly, flex-start, column);
   width: 40rem;
 }
+
+@media screen and (max-width: 417px) {
+  .item-description {
+    width: 100%;
+  }
+}
