@@ -14,7 +14,7 @@ interface LitsItemProps {
 const ListItem = ({ text, itemId }: LitsItemProps) => {
   const dispatch = useDispatch();
 
-  const remoweItem = (id: number) => {
+  const removeItem = (id: number) => {
     dispatch(deleteItem(id));
   };
 
@@ -30,7 +30,9 @@ const ListItem = ({ text, itemId }: LitsItemProps) => {
         <Link to={`/edit/${itemId}`}>
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
-        <img className="icon" src={deleteIcon} alt="delete icon" onClick={() => remoweItem(itemId)} />
+        <div onClick={() => removeItem(itemId)}>
+          <img className="icon" src={deleteIcon} alt="delete icon"  />
+        </div>
       </div>
     </div>
   );
