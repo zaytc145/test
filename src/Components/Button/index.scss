@@ -2,7 +2,6 @@ $сreateButtonColor: #39b54a;
 $deleteButtonColor: #ff0000;
 $backButtonColor: #0071bc;
 
-
 @mixin buttonEffectColor($color) {
   border-color: $color;
   &:hover {
@@ -25,4 +24,8 @@ $backButtonColor: #0071bc;
 
 .back-button {
   @include buttonEffectColor($backButtonColor);
+}
+
+.delete-button {
+  @include buttonEffectColor($deleteButtonColor);
 }
