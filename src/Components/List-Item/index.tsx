@@ -31,7 +31,7 @@ const ListItem = ({ text, itemId }: LitsItemProps) => {
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
         <div onClick={() => removeItem(itemId)}>
-          <img className="icon" src={deleteIcon} alt="delete icon"  />
+          <img className="icon" src={deleteIcon} alt="delete icon" />
         </div>
       </div>
     </div>
