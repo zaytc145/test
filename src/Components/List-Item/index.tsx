@@ -30,7 +30,7 @@ const ListItem = ({ text, itemId }: LitsItemProps) => {
         <Link to={`/edit/${itemId}`}>
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
-        <div onClick={() => removeItem(itemId)}>
+        <div data-testid="icon-wrapper" onClick={() => removeItem(itemId)}>
           <img className="icon" src={deleteIcon} alt="delete icon" />
         </div>
       </div>

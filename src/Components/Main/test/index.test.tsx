@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import { render, fireEvent } from "@testing-library/react";
 import Wrapper from "../../../testing-utils";
 import Main from "..";
-import { debug } from "console";
 
 describe("<Main/>", () => {
   it("show in DOM", () => {
@@ -11,7 +10,7 @@ describe("<Main/>", () => {
       <BrowserRouter>
         <Main />
       </BrowserRouter>,
-      { wrapper: Wrapper }
+      { wrapper: Wrapper }!
     );
     const button = getByText("Добавить");
     const items = getAllByText(/task [1-2]/);
@@ -22,4 +21,16 @@ describe("<Main/>", () => {
     icons.forEach((el) => expect(el).toBeInTheDocument());
   });
 
+  it("delete item", () => {
+    const { getAllByTestId, getByText } = render(
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>,
+      { wrapper: Wrapper }
+    );
+
+    const icons = getAllByTestId("icon-wrapper");
+    fireEvent.click(icons[1]);
+    expect(getByText("task 1")).not.toBeInTheDocument();
+  });
 });

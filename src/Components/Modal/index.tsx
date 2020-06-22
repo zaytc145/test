@@ -33,6 +33,7 @@ const Modal = ({ show, onClick, closeModal }: ModalProps) => {
               } else {
                 setErr(false);
                 await onClick(note);
+                setNote("");
                 closeModal();
               }
             }}

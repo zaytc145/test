@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { createSlice, combineReducers, configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
 
 type Props = {
   children: ReactNode;
@@ -12,7 +11,10 @@ const initialState = [
     id: 1,
     title: "task 1",
   },
-  { id: 2, title: "task 2" },
+  {
+    id: 2,
+    title: "task 2",
+  },
 ];
 
 const itemsSlice = createSlice({
@@ -27,6 +29,7 @@ const itemsSlice = createSlice({
     },
     deleteItem: (state, action) => {
       return state.filter((el) => el.id !== action.payload);
+      // return [...state, { id: 3, title: "task 3" }];
     },
     updateItem: (state, action) => {
       return state.map((el) => (el.id === +action.payload.id ? action.payload : el));
@@ -40,7 +43,6 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk],
 });
 
 const Wrapper = ({ children }: Props) => {
