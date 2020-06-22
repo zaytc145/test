@@ -1,16 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Main from "./Main";
 import "../style/style.scss";
-import ItemInfo from "./Item-info";
+
+const Main = React.lazy(() => import("./Main"));
+const EditItem = React.lazy(() => import("./Edit-item"));
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Main}></Route>
-        <Route path="/edit/:id" component={ItemInfo}></Route>
-      </Switch>
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <Switch>
+          <Route path="/" exact component={Main}></Route>
+          <Route path="/edit/:id" component={EditItem}></Route>
+        </Switch>
+      </Suspense>
     </BrowserRouter>
   );
 };

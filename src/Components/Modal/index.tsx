@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import close from "../style/icons/cross.svg";
-import Button from "./Button";
+import close from "../../style/icons/cross.svg";
+import Button from "../Button";
 import { createPortal } from "react-dom";
+import "./index.scss";
 
 interface ModalProps {
   show: boolean;
-  onClick: () => void;
+  onClick: (title: string) => void;
+  closeModal: () => void;
 }
 
-const Modal = ({ show, onClick }: ModalProps) => {
+const Modal = ({ show, onClick, closeModal }: ModalProps) => {
   const [note, setNote] = useState("");
   const [err, setErr] = useState(false);
 
@@ -16,20 +18,22 @@ const Modal = ({ show, onClick }: ModalProps) => {
     return createPortal(
       <div className="modal">
         <div className="modal-body">
-          <img className="icon close-icon" src={close} alt="close modal icon" onClick={onClick}></img>
+          <div className="icon close-icon" onClick={closeModal}>
+            <img src={close} alt="close modal icon"></img>
+          </div>
           <h2>Краткое описание</h2>
           <input className="text-input " value={note} type="text" onChange={(e) => setNote(e.target.value)} />
           {err && <span>Заголовок не может быть пустым</span>}
           <Button
             text="Добавить"
             type="create"
-            onClick={() => {
+            onClick={async () => {
               if (note.length === 0) {
                 return setErr(true);
               } else {
                 setErr(false);
-                console.log(note);
-                onClick();
+                await onClick(note);
+                closeModal();
               }
             }}
           />
@@ -41,4 +45,4 @@ const Modal = ({ show, onClick }: ModalProps) => {
   return null;
 };
 
-export default Modal;
+export default React.memo(Modal);

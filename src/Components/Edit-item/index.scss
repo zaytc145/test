@@ -1,0 +1,17 @@
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+.item-description {
+  @include flex(space-evenly, flex-start, column);
+  width: 40rem;
+}
+
+@media screen and (max-width: 417px) {
+  .item-description {
+    width: 100%;
+  }
+}
