@@ -20,21 +20,4 @@ describe("<Main/>", () => {
     items.forEach((el) => expect(el).toBeInTheDocument());
     icons.forEach((el) => expect(el).toBeInTheDocument());
   });
-  
-  //
-  //doesn't delete icon
-  //
-  // it("delete item", () => {
-  //   const { getAllByTestId, getByText } = render(
-  //     <BrowserRouter>
-  //       <Main />
-  //     </BrowserRouter>,
-  //     { wrapper: Wrapper }
-  //   );
-
-  //   const icons = getAllByTestId("icon-wrapper");
-  //   fireEvent.click(icons[3]);
-
-  //   expect(getByText("task ")).not.toBeInTheDocument();
-  // });
 });
