@@ -14,7 +14,7 @@ const Main = () => {
   useEffect(() => {
     dispatch(getItems());
   }, []);
-
+ 
   const renderList = (items: any[]) => {
     return items.map((el, i) => {
       return <ListItem text={el.title} itemId={el.id} key={i} />;
