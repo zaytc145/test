@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { render } from "@testing-library/react";
+import { render, getAllByAltText, fireEvent } from "@testing-library/react";
 import Wrapper from "../../../testing-utils";
 import Main from "..";
+import { act } from "react-dom/test-utils";
 
 describe("<Main/>", () => {
   it("show in DOM", () => {
@@ -20,4 +21,20 @@ describe("<Main/>", () => {
     items.forEach((el) => expect(el).toBeInTheDocument());
     icons.forEach((el) => expect(el).toBeInTheDocument());
   });
+
+  // it("delete item", () => {
+  //   const { getAllByAltText, getByText } = render(
+  //     <BrowserRouter>
+  //       <Main />
+  //     </BrowserRouter>,
+  //     { wrapper: Wrapper }
+  //   );
+
+  //   const icons = getAllByAltText("delete icon");
+  //   act(() => {
+  //     fireEvent.click(icons[1]);
+  //   });
+
+  //   expect(getByText("task 2")).not.toBeInTheDocument();
+  // });
 });

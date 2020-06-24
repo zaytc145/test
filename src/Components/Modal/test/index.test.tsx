@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Modal from "..";
+import { act } from "react-dom/test-utils";
 
 const modalRoot = document.createElement("div");
 modalRoot.setAttribute("id", "modal-root");
@@ -17,11 +18,14 @@ describe("<Modal/>", () => {
     const handleClose = jest.fn();
     const { getByText, getByRole } = render(<Modal onClick={handleClose} show={true} closeModal={handleClose} />);
     const input = getByRole("textbox") as HTMLInputElement;
-    fireEvent.change(input, {
-      target: { value: "task 3" },
+    act(() => {
+      fireEvent.change(input, {
+        target: { value: "task 3" },
+      });
     });
     const button = getByText("Добавить");
     expect(input.value).toBe("task 3");
+
     fireEvent.click(button);
   });
 });
