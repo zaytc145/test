@@ -9,7 +9,7 @@ const EditInfo = ({ match }: any) => {
   let { id } = match.params;
   const dispatch = useDispatch();
   const [note, setNote] = useState("");
-  const items = useSelector((state: RootState) => state.items);
+  const items = useSelector((state: RootState) => state.items.data);
 
   useEffect(() => {
     dispatch(getItems());

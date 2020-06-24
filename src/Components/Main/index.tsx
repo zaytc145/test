@@ -9,7 +9,7 @@ import "./index.scss";
 const Main = () => {
   const [modal, showModal] = useState(false);
   const dispatch = useDispatch();
-  const items = useSelector((state: RootState) => state.items);
+  const items = useSelector((state: RootState) => state.items.data);
 
   useEffect(() => {
     dispatch(getItems());

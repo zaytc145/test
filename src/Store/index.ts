@@ -5,25 +5,29 @@ import thunk from "redux-thunk";
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-type State = { id: number; title: string }[];
+type ItemsArray = { id: number; title: string }[];
 
-const initialState: State = [];
+type State = { isLoading: boolean; data: ItemsArray };
+
+const initialState: State = { isLoading: false, data: [] };
 
 const itemsSlice = createSlice({
   name: "items",
   initialState: initialState,
   reducers: {
-    getItems: (_, action: PayloadAction<State>) => {
-      return [...action.payload];
+    getItems: (state, action: PayloadAction<ItemsArray>) => {
+      return { ...state, data: [...action.payload] };
     },
     createItem: (state, action) => {
-      return state.concat(action.payload);
+      return { ...state, data: [...state.data, action.payload] };
     },
     deleteItem: (state, action) => {
-      return state.filter((el) => el.id !== action.payload);
+      const newData = state.data.filter((el) => el.id !== action.payload);
+      return { ...state, data: newData };
     },
     updateItem: (state, action) => {
-      return state.map((el) => (el.id === +action.payload.id ? action.payload : el));
+      const newData =  state.data.map((el) => (el.id === +action.payload.id ? action.payload : el));
+      return {...state, data:newData}
     },
   },
 });
