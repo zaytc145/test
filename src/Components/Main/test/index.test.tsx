@@ -11,7 +11,7 @@ describe("<Main/>", () => {
       <BrowserRouter>
         <Main />
       </BrowserRouter>,
-      { wrapper: Wrapper }!
+      { wrapper: Wrapper }
     );
     const button = getByText("Добавить");
     const items = getAllByText(/task [1-2]/);
