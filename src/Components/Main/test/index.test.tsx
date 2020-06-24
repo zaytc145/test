@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { render, getAllByAltText, fireEvent } from "@testing-library/react";
 import Wrapper from "../../../testing-utils";
 import Main from "..";
-import { act } from "react-dom/test-utils";
+
 
 describe("<Main/>", () => {
   it("show in DOM", () => {
