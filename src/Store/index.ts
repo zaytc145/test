@@ -47,7 +47,7 @@ export const deleteItem = (id: number) => async (dispatch: AppDispatch) => {
 };
 
 export const updateItem = (id: number, title: string) => async (dispatch: AppDispatch) => {
-  await API.post(`${id}`, {
+  await API.post(`/${id}`, {
     title,
   });
   const updatedItem = { id: +id, title };

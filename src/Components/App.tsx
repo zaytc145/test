@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import 'normalize.css'
+import "normalize.css";
 import "../style/style.scss";
 
 const Main = React.lazy(() => import("./main"));
