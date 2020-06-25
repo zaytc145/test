@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Button from "../Button";
+import Button from "../button";
 import { RootState, getItems, updateItem } from "../../Store";
 import "./index.scss";
 
@@ -21,7 +21,7 @@ const EditInfo = ({ match }: any) => {
     }
   }, [items]);
 
-  const oneUpdateItem = useCallback(() => dispatch(updateItem(id, note)), [dispatch, note, id]);
+  const oneUpdateItem = useCallback(() => dispatch(updateItem(id, note)), [dispatch, id, note]);
 
   return (
     <div className="body">

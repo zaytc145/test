@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import 'normalize.css'
 import "../style/style.scss";
 
-const Main = React.lazy(() => import("./Main"));
-const EditItem = React.lazy(() => import("./Edit-item"));
+const Main = React.lazy(() => import("./main"));
+const EditItem = React.lazy(() => import("./edit-item"));
 
 const App = () => {
   return (

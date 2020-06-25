@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../Button";
-import ListItem from "../List-Item";
-import Modal from "../Modal";
-import { RootState, getItems, createItem } from "../../Store";
+import Button from "../button";
+import ListItem from "../list-Item";
+import Modal from "../modal";
+import { RootState, getItems, createItem, ItemsArray } from "../../Store";
 import "./index.scss";
 
 const Main = () => {
-  const [modal, showModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.items.data);
 
@@ -15,24 +15,24 @@ const Main = () => {
     dispatch(getItems());
   }, []);
 
-  const renderList = (items: any[]) => {
+  const renderList = (items: ItemsArray) => {
     return items.map((el) => {
       return <ListItem text={el.title} itemId={el.id} key={el.id} />;
     });
+  };
+
+  const addItem = (title: string) => {
+    dispatch(createItem(title));
   };
 
   return (
     <div className="body">
       <div className="head">
         <h1>Список задач</h1>
-        <Button text="Добавить" type="create" onClick={() => showModal(true)} />
+        <Button text="Добавить" type="create" onClick={() => setIsModal(true)} />
       </div>
       <div className="list">{renderList(items)}</div>
-      <Modal
-        show={modal}
-        closeModal={() => showModal(false)}
-        onClick={(title: string) => dispatch(createItem(title))}
-      />
+      <Modal show={isModal} closeModal={() => setIsModal(false)} onClick={addItem} />
     </div>
   );
 };

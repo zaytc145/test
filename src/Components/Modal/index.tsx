@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-import Button from "../Button";
+import Button from "../button";
 import closeIcon from "../../style/icons/cross.svg";
 import "./index.scss";
 
@@ -14,6 +14,17 @@ const Modal = ({ show, onClick, closeModal }: Props) => {
   const [note, setNote] = useState("");
   const [err, setErr] = useState(false);
 
+  const createItem = () => {
+    if (note.length === 0) {
+      return setErr(true);
+    } else {
+      setErr(false);
+      onClick(note);
+      setNote("");
+      closeModal();
+    }
+  };
+
   if (show) {
     return createPortal(
       <div className="modal">
@@ -24,20 +35,7 @@ const Modal = ({ show, onClick, closeModal }: Props) => {
           <h2>Краткое описание</h2>
           <input className="text-input " value={note} type="text" onChange={(e) => setNote(e.target.value)} />
           {err && <span>Заголовок не может быть пустым</span>}
-          <Button
-            text="Добавить"
-            type="create"
-            onClick={async () => {
-              if (note.length === 0) {
-                return setErr(true);
-              } else {
-                setErr(false);
-                await onClick(note);
-                setNote("");
-                closeModal();
-              }
-            }}
-          />
+          <Button text="Добавить" type="create" onClick={createItem} />
         </div>
       </div>,
       document.getElementById("modal-root") as HTMLDivElement

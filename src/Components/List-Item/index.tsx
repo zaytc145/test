@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../../Store";
@@ -15,9 +15,7 @@ interface Props {
 const ListItem = ({ text, itemId }: Props) => {
   const dispatch = useDispatch();
 
-  const removeItem = (id: number) => {
-    dispatch(deleteItem(id));
-  };
+  const removeItem = useCallback(() => dispatch(deleteItem(itemId)), [dispatch, itemId]);
 
   return (
     <div className="list-item">
@@ -27,7 +25,7 @@ const ListItem = ({ text, itemId }: Props) => {
         <Link to={`/edit/${itemId}`}>
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
-        <button className="delete-icon-button" onClick={() => removeItem(itemId)}>
+        <button className="delete-icon-button" onClick={() => removeItem()}>
           <img className="icon" src={deleteIcon} alt="delete icon" />
         </button>
       </div>

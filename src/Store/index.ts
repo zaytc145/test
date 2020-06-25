@@ -1,33 +1,29 @@
-import { createSlice, configureStore, combineReducers, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, configureStore, combineReducers } from "@reduxjs/toolkit";
 import API from "../api";
 import thunk from "redux-thunk";
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-type ItemsArray = { id: number; title: string }[];
+export type ItemsArray = { id: number; title: string }[];
 
-type State = { isLoading: boolean; data: ItemsArray };
-
-const initialState: State = { isLoading: false, data: [] };
+const initialState = { isLoading: false, data: [] as ItemsArray };
 
 const itemsSlice = createSlice({
   name: "items",
   initialState: initialState,
   reducers: {
-    getItems: (state, action: PayloadAction<ItemsArray>) => {
+    getItems: (state, action) => {
       return { ...state, data: [...action.payload] };
     },
     createItem: (state, action) => {
       return { ...state, data: [...state.data, action.payload] };
     },
     deleteItem: (state, action) => {
-      const newData = state.data.filter((el) => el.id !== action.payload);
-      return { ...state, data: newData };
+      return { ...state, data: state.data.filter((el) => el.id !== action.payload) };
     },
     updateItem: (state, action) => {
-      const newData = state.data.map((el) => (el.id === +action.payload.id ? action.payload : el));
-      return { ...state, data: newData };
+      return { ...state, data: state.data.map((el) => (el.id === action.payload.id ? action.payload : el)) };
     },
   },
 });
