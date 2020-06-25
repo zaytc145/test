@@ -1,5 +1,5 @@
 import React from "react";
-import EditItem from "..";
+import EditItem from "../";
 import { BrowserRouter } from "react-router-dom";
 import { render, fireEvent } from "@testing-library/react";
 import Wrapper from "../../../testing-utils";
