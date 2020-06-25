@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../button";
-import ListItem from "../list-Item";
+import ListItem from "../list-item";
 import Modal from "../modal";
 import { RootState, getItems, createItem, ItemsArray } from "../../Store";
 import "./index.scss";

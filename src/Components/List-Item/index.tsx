@@ -25,7 +25,7 @@ const ListItem = ({ text, itemId }: Props) => {
         <Link to={`/edit/${itemId}`}>
           <img className="icon" src={editIcon} alt="edit icon" />
         </Link>
-        <button className="delete-icon-button" onClick={() => removeItem()}>
+        <button className="delete-icon-button" onClick={removeItem} type="button">
           <img className="icon" src={deleteIcon} alt="delete icon" />
         </button>
       </div>

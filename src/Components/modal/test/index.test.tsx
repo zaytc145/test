@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Modal from "..";
+import Modal from "../";
 import { act } from "react-dom/test-utils";
 
 const modalRoot = document.createElement("div");
