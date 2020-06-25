@@ -1,8 +1,8 @@
 import React from "react";
-import ListItem from "../";
 import { render } from "@testing-library/react";
-import Wrapper from "../../../testing-utils";
 import { BrowserRouter } from "react-router-dom";
+import ListItem from "../";
+import Wrapper from "../../../testing-utils";
 
 describe("<ListItem/>", () => {
   it("render in dom", () => {
