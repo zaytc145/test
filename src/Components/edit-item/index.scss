@@ -1,0 +1,28 @@
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+.body {
+  width: 95%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.head {
+  @include flex(space-between, center, row);
+  padding: 5.7rem 0 2.9rem 0;
+}
+
+.item-description {
+  @include flex(space-evenly, flex-start, column);
+  width: 40rem;
+}
+
+@media screen and (max-width: 417px) {
+  .item-description {
+    width: 100%;
+  }
+}
