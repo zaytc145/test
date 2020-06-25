@@ -26,8 +26,8 @@ const itemsSlice = createSlice({
       return { ...state, data: newData };
     },
     updateItem: (state, action) => {
-      const newData =  state.data.map((el) => (el.id === +action.payload.id ? action.payload : el));
-      return {...state, data:newData}
+      const newData = state.data.map((el) => (el.id === +action.payload.id ? action.payload : el));
+      return { ...state, data: newData };
     },
   },
 });
