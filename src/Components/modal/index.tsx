@@ -29,9 +29,9 @@ const Modal = ({ show, onClick, closeModal }: Props) => {
     return createPortal(
       <div className="modal">
         <div className="modal-body">
-          <div className="icon close-icon" onClick={closeModal}>
+          <button className="icon close-icon" onClick={closeModal}>
             <img src={closeIcon} alt="close modal icon"></img>
-          </div>
+          </button>
           <h2>Краткое описание</h2>
           <input className="text-input " value={note} type="text" onChange={(e) => setNote(e.target.value)} />
           {err && <span>Заголовок не может быть пустым</span>}
