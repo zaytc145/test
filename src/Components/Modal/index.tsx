@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import close from "../../style/icons/cross.svg";
-import Button from "../Button";
 import { createPortal } from "react-dom";
+import Button from "../Button";
+import closeIcon from "../../style/icons/cross.svg";
 import "./index.scss";
 
-interface ModalProps {
+interface Props {
   show: boolean;
   onClick: (title: string) => void;
   closeModal: () => void;
 }
 
-const Modal = ({ show, onClick, closeModal }: ModalProps) => {
+const Modal = ({ show, onClick, closeModal }: Props) => {
   const [note, setNote] = useState("");
   const [err, setErr] = useState(false);
 
@@ -19,7 +19,7 @@ const Modal = ({ show, onClick, closeModal }: ModalProps) => {
       <div className="modal">
         <div className="modal-body">
           <div className="icon close-icon" onClick={closeModal}>
-            <img src={close} alt="close modal icon"></img>
+            <img src={closeIcon} alt="close modal icon"></img>
           </div>
           <h2>Краткое описание</h2>
           <input className="text-input " value={note} type="text" onChange={(e) => setNote(e.target.value)} />

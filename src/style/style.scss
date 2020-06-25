@@ -22,13 +22,6 @@ input {
   border-radius: 5px;
 }
 
-@mixin flex($justify, $align, $direction) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-  flex-direction: $direction;
-}
-
 h1 {
   font-size: 3.2rem;
 }

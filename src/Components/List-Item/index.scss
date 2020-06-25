@@ -11,41 +11,43 @@ $borderColor: #e6e6e6;
   @include flex(space-between, stretch, row);
   border: 1px solid $borderColor;
   border-bottom: none;
+  font-size: 1.4rem;
+
+  &-el {
+    border-right: 1px solid $borderColor;
+    padding: 1.5rem;
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &-num {
+    flex: 0 2 18rem;
+  }
+
+  &-text {
+    flex: 1 3 87rem;
+  }
+
+  &-buttons {
+    flex: 1 1 8rem;
+    @include flex(space-evenly, center, row);
+    padding: 0.5rem;
+  }
+
   &:last-child {
     border-bottom: 1px solid $borderColor;
   }
 }
 
-.list-item-el {
-  border-right: 1px solid $borderColor;
-  padding: 1.5rem;
-  &:last-child {
-    border-right: none;
-  }
-  span {
-    font-size: 1.4rem;
-  }
-}
-
-.list-item-num {
-  flex: 0 2 18rem;
-}
-.list-item-text {
-  flex: 1 3 87rem;
-}
-
-.list-item-buttons {
-  flex: 1 1 8rem;
-  @include flex(space-evenly, center, row);
-  padding: 0.5rem;
-}
 .icon {
   width: 25px;
   cursor: pointer;
 }
 
-.delete-icon {
+.delete-icon-button {
   padding: 0;
   background-color: white;
   margin: 0;
+  border: none;
 }

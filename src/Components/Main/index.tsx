@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button";
 import ListItem from "../List-Item";
 import Modal from "../Modal";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState, getItems, createItem } from "../../Store";
 import "./index.scss";
 
@@ -14,10 +14,10 @@ const Main = () => {
   useEffect(() => {
     dispatch(getItems());
   }, []);
- 
+
   const renderList = (items: any[]) => {
-    return items.map((el, i) => {
-      return <ListItem text={el.title} itemId={el.id} key={i} />;
+    return items.map((el) => {
+      return <ListItem text={el.title} itemId={el.id} key={el.id} />;
     });
   };
 
