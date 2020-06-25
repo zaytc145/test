@@ -6,34 +6,16 @@ import Main from "..";
 
 describe("<Main/>", () => {
   it("show in DOM", () => {
-    const { getByText, getAllByText, getAllByRole } = render(
+    const { getByText} = render(
       <BrowserRouter>
         <Main />
       </BrowserRouter>,
       { wrapper: Wrapper }
     );
     const button = getByText("Добавить");
-    const items = getAllByText(/task [1-2]/);
-    const icons = getAllByRole("img");
+    const text = getByText("Список задач");
 
     expect(button).toBeInTheDocument();
-    items.forEach((el) => expect(el).toBeInTheDocument());
-    icons.forEach((el) => expect(el).toBeInTheDocument());
+    expect(text).toBeInTheDocument();
   });
-
-  // it("delete item", () => {
-  //   const { getAllByAltText, getByText } = render(
-  //     <BrowserRouter>
-  //       <Main />
-  //     </BrowserRouter>,
-  //     { wrapper: Wrapper }
-  //   );
-
-  //   const icons = getAllByAltText("delete icon");
-  //   act(() => {
-  //     fireEvent.click(icons[1]);
-  //   });
-
-  //   expect(getByText("task 2")).not.toBeInTheDocument();
-  // });
 });
