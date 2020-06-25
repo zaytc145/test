@@ -1,29 +1,29 @@
-import { createSlice, configureStore, combineReducers, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, configureStore, combineReducers } from "@reduxjs/toolkit";
 import API from "../api";
 import thunk from "redux-thunk";
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-type State = { id: number; title: string }[];
+export type ItemsArray = { id: number; title: string }[];
 
-const initialState: State = [];
+const initialState = { isLoading: false, data: [] as ItemsArray };
 
 const itemsSlice = createSlice({
   name: "items",
   initialState: initialState,
   reducers: {
-    getItems: (_, action: PayloadAction<State>) => {
-      return [...action.payload];
+    getItems: (state, action) => {
+      return { ...state, data: [...action.payload] };
     },
     createItem: (state, action) => {
-      return state.concat(action.payload);
+      return { ...state, data: [...state.data, action.payload] };
     },
     deleteItem: (state, action) => {
-      return state.filter((el) => el.id !== action.payload);
+      return { ...state, data: state.data.filter((el) => el.id !== action.payload) };
     },
     updateItem: (state, action) => {
-      return state.map((el) => (el.id === +action.payload.id ? action.payload : el));
+      return { ...state, data: state.data.map((el) => (el.id === action.payload.id ? action.payload : el)) };
     },
   },
 });
@@ -47,7 +47,7 @@ export const deleteItem = (id: number) => async (dispatch: AppDispatch) => {
 };
 
 export const updateItem = (id: number, title: string) => async (dispatch: AppDispatch) => {
-  await API.post(`${id}`, {
+  await API.post(`/${id}`, {
     title,
   });
   const updatedItem = { id: +id, title };

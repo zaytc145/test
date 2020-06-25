@@ -20,13 +20,7 @@ input {
   border: none;
   background-color: #f2f2f2;
   border-radius: 5px;
-}
-
-@mixin flex($justify, $align, $direction) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-  flex-direction: $direction;
+  font-size: 1.4rem;
 }
 
 h1 {
@@ -34,7 +28,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
 }
 
